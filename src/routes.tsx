@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/points',
-        element: <CreatePoint />,
+        element: <CreatePoint />, // TODO Criar tela de listagem de pontos
       },
       {
         path: '/create-point',

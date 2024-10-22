@@ -13,7 +13,7 @@ export function Home() {
 
   return (
     <>
-      <Helmet title="Tela inicial" />
+      <Helmet title="Início" />
 
       <div className="w-full h-screen relative bg-background overflow-hidden">
         <img
