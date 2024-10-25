@@ -11,7 +11,6 @@ import { createUser } from '@/api/users/create-user'
 import { passwordRegex } from '@/utils/regex'
 
 import { Button } from '@/components/button'
-import { Header } from '@/components/header'
 import { Input } from '@/components/input'
 
 const signUpForm = z
@@ -69,80 +68,82 @@ export function SignUp() {
     <>
       <Helmet title="Cadastro de perfil" />
 
-      <div className="w-full min-h-screen flex flex-col bg-background">
-        <Header />
-
+      <main className="w-full max-w-7xl py-6 xl:py-8 px-6 md:px-10 xl:px-20 mx-auto">
         <form
           onSubmit={handleSubmit(handleSignUp)}
-          className="w-full max-w-3xl flex flex-col gap-8 bg-white rounded-lg p-16 my-8 mx-auto"
+          className="w-full flex flex-col gap-4 md:gap-8 bg-white rounded-lg p-6 md:p-12 lg:p-16 mx-auto"
         >
-          <h1 className="font-ubuntu text-4xl text-title font-bold">
+          <h1 className="font-ubuntu text-2xl md:text-4xl text-title font-bold">
             Cadastro do perfil
           </h1>
 
           <fieldset className="flex flex-col gap-6">
-            <legend className="mb-6">
-              <h2 className="font-ubuntu text-2xl text-title font-bold">
+            <legend className="mb-2 md:mb-6">
+              <h2 className="font-ubuntu text-lg md:text-3xl text-title font-bold">
                 Dados
               </h2>
             </legend>
 
-            <Input
-              id="name"
-              label="Nome do usuário"
-              placeholder="Digite seu nome completo"
-              errorMessage={errors.name?.message}
-              required
-              {...register('name')}
-            />
+            <div className="w-full grid md:grid-cols-2 gap-4 md:gap-6">
+              <Input
+                id="name"
+                label="Nome do usuário"
+                placeholder="Digite seu nome completo"
+                errorMessage={errors.name?.message}
+                required
+                {...register('name')}
+              />
 
-            <Input
-              id="email"
-              type="email"
-              label="E-mail do usuário"
-              placeholder="Digite seu e-mail"
-              errorMessage={errors.email?.message}
-              required
-              {...register('email')}
-            />
+              <Input
+                id="email"
+                type="email"
+                label="E-mail do usuário"
+                placeholder="Digite seu e-mail"
+                errorMessage={errors.email?.message}
+                required
+                {...register('email')}
+              />
+            </div>
 
-            <Input
-              id="password"
-              type="password"
-              label="Senha do usuário"
-              placeholder="********"
-              tooltipText={
-                <p>
-                  A senha deve conter pelo menos:
-                  <br />- 8 dígitos
-                  <br />- 1 letra maiúscula
-                  <br />- 1 letra minúscula
-                  <br />- 1 número
-                  <br />- 1 caracter especial
-                </p>
-              }
-              errorMessage={errors.password?.message}
-              required
-              {...register('password')}
-            />
+            <div className="w-full grid md:grid-cols-2 gap-4 md:gap-6">
+              <Input
+                id="password"
+                type="password"
+                label="Senha do usuário"
+                placeholder="********"
+                tooltipText={
+                  <p>
+                    A senha deve conter pelo menos:
+                    <br />- 8 dígitos
+                    <br />- 1 letra maiúscula
+                    <br />- 1 letra minúscula
+                    <br />- 1 número
+                    <br />- 1 caracter especial
+                  </p>
+                }
+                errorMessage={errors.password?.message}
+                required
+                {...register('password')}
+              />
 
-            <Input
-              id="confirmPassword"
-              type="password"
-              label="Confirmação de senha"
-              placeholder="********"
-              tooltipText="A senhas devem ser idênticas."
-              errorMessage={errors.confirmPassword?.message}
-              required
-              {...register('confirmPassword')}
-            />
+              <Input
+                id="confirmPassword"
+                type="password"
+                label="Confirmação de senha"
+                placeholder="********"
+                tooltipText="A senhas devem ser idênticas."
+                errorMessage={errors.confirmPassword?.message}
+                required
+                {...register('confirmPassword')}
+              />
+            </div>
           </fieldset>
 
           <Button type="submit" isLoading={isSubmitting} className="self-end">
             Cadastrar perfil
           </Button>
         </form>
-      </div>
+      </main>
     </>
   )
 }

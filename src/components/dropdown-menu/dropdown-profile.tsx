@@ -41,21 +41,21 @@ export function DropdownProfile({ name, email }: DropdownProfileProps) {
 
       <DropdownMenuPrimitive.Item asChild>
         <Link
-          to="/create-point"
-          className="flex items-center justify-between focus:bg-desaturated active:bg-greenpeace gap-2 active:text-white rounded-lg outline-none overflow-hidden p-2 transition-all duration-300"
-        >
-          <p className="line-clamp-1">Cadastrar ponto de coleta</p>
-          <Plus className="min-w-4 w-4 min-h-4 h-4" />
-        </Link>
-      </DropdownMenuPrimitive.Item>
-
-      <DropdownMenuPrimitive.Item asChild>
-        <Link
           to="/points"
           className="flex items-center justify-between focus:bg-desaturated active:bg-greenpeace gap-2 active:text-white rounded-lg outline-none overflow-hidden p-2 transition-all duration-300"
         >
           <p className="line-clamp-1">Encontrar ponto de coleta</p>
           <MagnifyingGlass className="min-w-4 w-4 min-h-4 h-4" />
+        </Link>
+      </DropdownMenuPrimitive.Item>
+
+      <DropdownMenuPrimitive.Item asChild>
+        <Link
+          to="/create-point"
+          className="flex items-center justify-between focus:bg-desaturated active:bg-greenpeace gap-2 active:text-white rounded-lg outline-none overflow-hidden p-2 transition-all duration-300"
+        >
+          <p className="line-clamp-1">Cadastrar ponto de coleta</p>
+          <Plus className="min-w-4 w-4 min-h-4 h-4" />
         </Link>
       </DropdownMenuPrimitive.Item>
 

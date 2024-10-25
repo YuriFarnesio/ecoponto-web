@@ -6,9 +6,11 @@ export function NotFound() {
     <>
       <Helmet title="404" />
 
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-background gap-2">
-        <h1 className="text-4xl font-bold">Página não encontrada</h1>
-        <p className="text-texts">
+      <main className="w-full h-screen flex flex-col items-center justify-center bg-background gap-2 px-4">
+        <h1 className="text-4xl font-bold text-center">
+          Página não encontrada
+        </h1>
+        <p className="text-texts text-center">
           Voltar para a{' '}
           <Link
             to="/"
@@ -17,7 +19,7 @@ export function NotFound() {
             Tela Inicial
           </Link>
         </p>
-      </div>
+      </main>
     </>
   )
 }

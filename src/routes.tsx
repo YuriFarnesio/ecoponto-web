@@ -4,10 +4,11 @@ import { NotFound } from '@/pages/404'
 import { AuthenticatedLayout } from '@/pages/_layouts/authenticated'
 import { CreatePoint } from '@/pages/authenticated/create-point'
 import { Home } from '@/pages/authenticated/home'
+import { ListPoints } from '@/pages/authenticated/list-points'
+import { SignUp } from '@/pages/authenticated/sign-up'
 import { UpdatePoint } from '@/pages/authenticated/update-point'
 import { UpdateUser } from '@/pages/authenticated/update-user'
 import { Error } from '@/pages/error'
-import { SignUp } from '@/pages/sign-up'
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +21,16 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: '/sign-up',
+        element: <SignUp />,
+      },
+      {
         path: '/update-user',
         element: <UpdateUser />,
       },
       {
         path: '/points',
-        element: <CreatePoint />, // TODO Criar tela de listagem de pontos
+        element: <ListPoints />,
       },
       {
         path: '/create-point',
@@ -36,10 +41,6 @@ export const router = createBrowserRouter([
         element: <UpdatePoint />,
       },
     ],
-  },
-  {
-    path: '/sign-up',
-    element: <SignUp />,
   },
   {
     path: '*',

@@ -1,18 +1,20 @@
 import { useQuery } from '@tanstack/react-query'
-import { createContext, ReactNode } from 'react'
+import { isAxiosError } from 'axios'
+import { createContext, ReactNode, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { getUserProfile } from '@/api/users/get-user-profile'
+import {
+  getUserProfile,
+  type GetUserProfileResponse,
+} from '@/api/users/get-user-profile'
+import { queryClient } from '@/lib/react-query'
 
-interface UserProfile {
-  id: number
-  name: string
-  email: string
-  created_at: Date
-  updated_at: Date
-}
+import { Loader } from '@/components/loader'
+
+const unauthenticatedRoutes = ['/', '/sign-up']
 
 interface UserProfileContextType {
-  userProfile?: UserProfile
+  userProfile?: GetUserProfileResponse | Record<string, never>
   isLoading: boolean
 }
 
@@ -23,14 +25,48 @@ interface UserProfileProviderProps {
 }
 
 export function UserProfileProvider({ children }: UserProfileProviderProps) {
-  const { data: userProfile, isLoading } = useQuery({
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const {
+    data: userProfile,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['user-profile'],
     queryFn: getUserProfile,
+    retry: (failureCount, error) => {
+      if (isAxiosError(error)) {
+        const status = error.response?.status
+        const code = error.response?.data.code
+
+        if (status === 401 && code === 'UNAUTHORIZED') {
+          return false
+        }
+      }
+
+      return failureCount <= 3
+    },
   })
+
+  useEffect(() => {
+    if (location.pathname === '/sign-up' && userProfile?.id) {
+      navigate('/', { replace: true })
+    }
+
+    if (isError && !unauthenticatedRoutes.includes(location.pathname)) {
+      navigate('/', { replace: true })
+      queryClient.setQueryData(['user-profile'], {})
+    }
+  }, [isError, location, navigate, userProfile])
 
   return (
     <UserProfileContext.Provider value={{ userProfile, isLoading }}>
-      {children}
+      {!isLoading ? (
+        <Loader message="Carregando dados do usuário..." />
+      ) : (
+        children
+      )}
     </UserProfileContext.Provider>
   )
 }

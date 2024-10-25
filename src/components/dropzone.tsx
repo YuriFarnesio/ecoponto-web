@@ -37,12 +37,12 @@ export function Dropzone({
   })
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="w-full flex items-center justify-center bg-desaturated rounded-lg p-8">
+    <div className="w-full flex flex-col gap-2">
+      <div className="w-full flex items-center justify-center bg-desaturated rounded-lg p-2 md:p-8">
         <div
           {...getRootProps()}
           className={
-            'group w-full h-60 flex flex-col items-center justify-center relative gap-4 border border-dashed border-greenpeace hover:border-ecogreen rounded-lg overflow-hidden cursor-pointer select-none transition duration-300'
+            'group w-full h-40 md:h-80 flex flex-col items-center justify-center relative gap-2 md:gap-4 border border-dashed border-greenpeace hover:border-ecogreen rounded-lg overflow-hidden cursor-pointer select-none transition duration-300'
           }
         >
           <input {...getInputProps()} />
@@ -56,7 +56,9 @@ export function Dropzone({
           ) : (
             <>
               <UploadSimple className="text-2xl text-greenpeace group-hover:text-ecogreen transition duration-300" />
-              <p className="text-title">Imagem do estabelecimento</p>
+              <p className="text-sm md:text-base text-title">
+                Imagem do estabelecimento
+              </p>
             </>
           )}
         </div>

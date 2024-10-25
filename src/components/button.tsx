@@ -22,10 +22,10 @@ export function Button({
     <button
       disabled={isDisabled}
       className={cn(
-        'w-fit flex items-center justify-center relative bg-greenpeace text-white font-bold rounded-lg overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300',
+        'w-fit flex items-center justify-center relative bg-greenpeace text-sm md:text-base text-white font-bold rounded-lg overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300',
         LeftIcon
-          ? 'enabled:hover:brightness-90 p-4 pl-18'
-          : 'enabled:hover:bg-ecogreen py-4 px-10',
+          ? 'enabled:hover:brightness-90 p-4 pl-14 md:pl-18'
+          : 'enabled:hover:bg-ecogreen py-2 md:py-4 px-6 md:px-10',
         className,
       )}
       {...props}

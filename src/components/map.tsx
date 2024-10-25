@@ -32,7 +32,6 @@ function LocationMarker({
   })
 
   useEffect(() => {
-    console.log('aqui')
     if (isEditing) {
       if (
         initialPositions &&
@@ -80,7 +79,7 @@ export function Map({
       zoom={15}
       center={positions}
       scrollWheelZoom={true}
-      className="w-full h-80 rounded-lg z-30"
+      className="w-full h-44 md:h-96 rounded-lg z-30"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

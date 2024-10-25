@@ -29,8 +29,11 @@ const MaskedInput = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     return (
-      <div className="flex flex-col gap-2">
-        <label htmlFor={id} className="flex items-center text-sm text-texts">
+      <div className="flex flex-col gap-1 md:gap-2">
+        <label
+          htmlFor={id}
+          className="flex items-center text-xs md:text-sm text-texts"
+        >
           {required && <span className="text-red-500 mr-0.5">*</span>}
           {label}
           {tooltipText && (
@@ -44,7 +47,7 @@ const MaskedInput = forwardRef<HTMLInputElement, InputProps>(
           id={id}
           type={type}
           className={cn(
-            'bg-background text-base text-texts placeholder:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-4 px-6 transition-all duration-300',
+            'bg-background text-sm md:text-base text-texts placeholder:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-2 md:py-4 px-3 md:px-6 transition-all duration-300',
             className,
           )}
           ref={ref}

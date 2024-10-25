@@ -8,9 +8,11 @@ export function Error() {
     <>
       <Helmet title="Error" />
 
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-background gap-2">
-        <h1 className="text-4xl font-bold">Whoops, algo aconteceu...</h1>
-        <p className="text-texts">
+      <main className="w-full h-screen flex flex-col items-center justify-center bg-background gap-2 px-4">
+        <h1 className="text-4xl font-bold text-center">
+          Whoops, algo aconteceu...
+        </h1>
+        <p className="text-texts text-center">
           Um erro aconteceu na aplicação, abaixo você encontra mais detalhes:
         </p>
         <pre>{error?.message || JSON.stringify(error)}</pre>
@@ -23,7 +25,7 @@ export function Error() {
             Tela Inicial
           </Link>
         </p>
-      </div>
+      </main>
     </>
   )
 }

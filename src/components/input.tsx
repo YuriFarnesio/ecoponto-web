@@ -28,11 +28,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <label
           htmlFor={id}
           className={cn(
-            'flex items-center text-sm text-texts',
+            'flex items-center text-xs md:text-sm text-texts',
             variant === 'dropdown' && 'text-xs',
           )}
         >
@@ -49,7 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           id={id}
           type={type}
           className={cn(
-            'bg-background text-base text-texts placeholder:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-4 px-6 transition-all duration-300',
+            'bg-background text-sm md:text-base text-texts placeholder:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-2 md:py-4 px-3 md:px-6 transition-all duration-300',
             variant === 'dropdown' && 'text-sm py-2 px-3',
             className,
           )}

@@ -3,7 +3,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -12,8 +12,8 @@ import type { GetUserProfileResponse } from '@/api/users/get-user-profile'
 import { queryClient } from '@/lib/react-query'
 import { passwordRegex } from '@/utils/regex'
 
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
+import { Button } from '../button'
+import { Input } from '../input'
 
 const signInForm = z.object({
   email: z.string().min(1, 'Campo obrigatório.').email('E-mail inválido!'),
@@ -25,6 +25,7 @@ const signInForm = z.object({
 type SignInForm = z.infer<typeof signInForm>
 
 export function DropdownSignInForm() {
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
   const {
@@ -52,6 +53,7 @@ export function DropdownSignInForm() {
       toast.success('Login realizado com sucesso.')
 
       queryClient.setQueryData<GetUserProfileResponse>(['user-profile'], user)
+      navigate('/')
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage = error?.response?.data?.message

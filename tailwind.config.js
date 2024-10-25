@@ -16,6 +16,9 @@ export default {
         desaturated: '#E1FAEC',
         greenpeace: '#34CB79',
         ecogreen: '#2FB86E',
+
+        danger: '#EF4444',
+        dangerHovered: '#DE3333',
       },
 
       fontFamily: {
@@ -25,6 +28,7 @@ export default {
 
       fontSize: {
         sm: ['0.875rem', '1rem'],
+        base: ['1rem', '1.125rem'],
         '2xl': ['1.5rem', '1.75rem'],
         '4xl': ['2.25rem', '2.875rem'],
         '5xl': ['3.375rem', '4rem'],

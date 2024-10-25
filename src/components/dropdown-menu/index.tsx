@@ -23,24 +23,26 @@ export function DropdownMenu() {
   return (
     <DropdownMenuPrimitive.Root>
       <DropdownMenuPrimitive.Trigger asChild>
-        <button className="w-10 h-10 flex items-center justify-center bg-greenpeace hover:bg-ecogreen text-white rounded-full outline-none cursor-pointer transition-all duration-300">
+        <button className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-greenpeace hover:bg-ecogreen text-white rounded-full outline-none cursor-pointer transition-all duration-300">
           {twoLetters ? (
-            <span className="text-base font-ubuntu">{twoLetters}</span>
+            <span className="text-xs md:text-base font-ubuntu">
+              {twoLetters}
+            </span>
           ) : (
-            <User className="w-5 h-5" />
+            <User className="w-4 h-4 md:w-5 md:h-5" />
           )}
         </button>
       </DropdownMenuPrimitive.Trigger>
 
       <DropdownMenuPrimitive.Portal>
         <DropdownMenuPrimitive.Content
-          className="w-72 flex flex-col gap-1 bg-white rounded-lg shadow-md select-none p-2"
+          className="w-72 flex flex-col gap-1 bg-white rounded-lg shadow-md select-none p-2 z-40"
           sideOffset={5}
           align="end"
         >
           <DropdownMenuPrimitive.Arrow className="fill-white" />
 
-          {userProfile ? (
+          {userProfile?.id ? (
             <DropdownProfile
               name={userProfile.name}
               email={userProfile.email}

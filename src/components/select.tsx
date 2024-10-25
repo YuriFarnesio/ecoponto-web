@@ -26,8 +26,11 @@ export function Select({
   ...props
 }: SelectProps) {
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-sm text-texts">
+    <div className="flex flex-col gap-1 md:gap-2">
+      <label
+        htmlFor={name}
+        className="flex items-center text-xs md:text-sm text-texts"
+      >
         {required && <span className="text-red-500">* </span>}
         {label}
       </label>
@@ -36,7 +39,7 @@ export function Select({
         <SelectPrimitive.Trigger
           id={name}
           className={cn(
-            'h-14 flex items-center justify-between bg-background text-base text-texts data-[placeholder]:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-4 px-6 transition-all duration-300 [&>span]:line-clamp-1',
+            'h-8 md:h-14 flex items-center justify-between bg-background text-sm md:text-base text-texts data-[placeholder]:text-placeholder rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-greenpeace py-2 md:py-4 px-3 md:px-6 transition-all duration-300 [&>span]:line-clamp-1',
             className,
           )}
           {...props}
