@@ -62,7 +62,7 @@ export function UserProfileProvider({ children }: UserProfileProviderProps) {
 
   return (
     <UserProfileContext.Provider value={{ userProfile, isLoading }}>
-      {!isLoading ? (
+      {isLoading ? (
         <Loader message="Carregando dados do usuário..." />
       ) : (
         children
