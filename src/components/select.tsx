@@ -31,7 +31,7 @@ export function Select({
         htmlFor={name}
         className="flex items-center text-xs md:text-sm text-texts"
       >
-        {required && <span className="text-red-500">* </span>}
+        {required && <span className="text-red-500 mr-0.5">*</span>}
         {label}
       </label>
 
